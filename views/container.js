@@ -1,5 +1,5 @@
 import React from 'react';
-import include from './include';
+import Include from './Include';
 import cache from '../lib/cache';
 import _ from 'lodash';
 
@@ -27,8 +27,8 @@ export default props => {
         <link rel="stylesheet" href={`${staticHostUrl}/styles/all.min.css`}/>
         <link rel="stylesheet" href={`${staticHostUrl}/styles/font.css`}/>
         <script>dataLayer=[];</script>
-        {_.map(_.split(props.cssName, ','), ele => {
-            return <link rel="stylesheet"
+        {_.map(_.split(props.cssName, ','), (ele, i) => {
+            return <link rel="stylesheet" key={i}
                 href={`${staticHostUrl}/styles/page/${ele}.css`} />
         })}
     </head>
@@ -36,13 +36,27 @@ export default props => {
     <div id="clickToCall"></div>
     <var id="storeHostUrl" className="hidden">{storeHostUrl}</var>
     <var id="staticHostUrl" className="hidden">{staticHostUrl}</var>
-    <var id="siteAppConfig" className="hidden" dangerouslySetInnerHTML={{__html:JSON.stringify(siteAppConf)}}></var>
-    <var id="profileInfo_header" className="hidden">{}</var>
-    {include(props)}
+    <var id="siteAppConfig" className="hidden" dangerouslySetInnerHTML={{__html:JSON.stringify(siteAppConf)}} />
+    <var id="profileInfo_header" className="hidden" dangerouslySetInnerHTML={{__html:JSON.stringify({
+        "response" : {
+            "profileInfo" : {
+                "securityStatus" : 0,
+                "lastName" : null,
+                "remainingPoints" : "NOTFOUND",
+                "assertPhoneNumber" : [ {
+                    "timePeriod" : 1,
+                    "phoneNumber" : null
+                } ],
+                "firstName" : null
+            }
+        },
+        "success" : true
+    })}} />
+    <Include contentItem={props}/>
     <script src={`${staticHostUrl }/scripts/lib.js`}></script>
     <script defer="defer" src={`${staticHostUrl }/scripts/deferlib.js`}></script>
-    {_.map(_.split(props.jsName, ','), ele => {
-        return <script defer="defer" src={`${staticHostUrl }/scripts/page/${ele}.js`}></script>
+    {_.map(_.split(props.jsName, ','), (ele, i) => {
+        return <script key={i} defer="defer" src={`${staticHostUrl }/scripts/page/${ele}.js`}></script>
     })}
     </body>
     </html>

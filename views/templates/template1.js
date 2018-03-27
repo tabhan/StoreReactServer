@@ -1,9 +1,14 @@
 import React from 'react';
-import include from '../include';
+import Include from '../Include';
 
 export default props => {
+    const contentItem = props.contentItem;
     return <div className="shadow">
-        {include(props.mainSection)}
+        <If condition={contentItem.mainSection}>
+            <main className="container">
+                <Include contentItem={contentItem.mainSection} />
+            </main>
+        </If>
     </div>
 }
 
