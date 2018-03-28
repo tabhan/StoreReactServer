@@ -17,5 +17,8 @@
   },
   "static": {
     "url": "http://localhost/static"
+  },
+  "wcs": {
+    "urlTemplate": "http://172.17.118.28:7102/cs/Sites?d=NoTouch&lookuphost=/cs/content&lookuppage=<%= lookuppage %>&path=<%= path %>"
   }
 }
