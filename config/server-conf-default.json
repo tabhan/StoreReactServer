@@ -2,8 +2,12 @@
   "server": {
     "port": 3000
   },
+  "siteAppConf": {
+    "staticHostUrl": "http://localhost/static",
+    "storeHostUrl": "http://localhost"
+  },
   "store": {
-    "url": "http://172.17.118.27:7001",
+    "url": "http://172.17.118.26:7001",
     "headers": {
       "accept": "application/json",
       "accept-encoding": "application/json"

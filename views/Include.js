@@ -11,25 +11,27 @@ const include = (props, i) => {
 
     if(Array.isArray(contentItem)){
         return contentItem.map((e, i) => {
-            return include({contentItem: e}, i);
+            const propsNext = _.merge({}, props);
+            propsNext.contentItem = e;
+            return include(propsNext, i);
         })
     }
 
     const type = _.get(contentItem, '@type');
     logger.debug('cartridge type', type);
-    if(type == null){
+    if(_.isEmpty(type)){
         logger.error('no cartridge type found', props);
         return null;
     }
 
     const Template = templates[type];
-    if(Template == undefined){
+    if(Template === undefined){
         logger.error(`template of ${type} is undefined`);
         logger.debug(props);
         return null;
     }else{
-        return <Template contentItem={contentItem} key={i} />
+        return <Template {...props} contentItem={contentItem} key={i} />
     }
-}
+};
 
 export default include;
