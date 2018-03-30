@@ -39,6 +39,7 @@ export default props => {
     <var id="staticHostUrl" className="hidden">{staticHostUrl}</var>
     <var id="siteAppConfig" className="hidden" dangerouslySetInnerHTML={{__html:JSON.stringify(siteAppConf)}} />
     <var id="profileInfo_header" className="hidden" dangerouslySetInnerHTML={{__html:JSON.stringify(props.profileInfo)}} />
+    <var id="mini_orderInfo" className="hidden" dangerouslySetInnerHTML={{__html:JSON.stringify(props.orderInfo)}} />
     <Include {...props}/>
     <script src={`${staticHostUrl }/scripts/lib.js`}></script>
     <script defer="defer" src={`${staticHostUrl }/scripts/deferlib.js`}></script>

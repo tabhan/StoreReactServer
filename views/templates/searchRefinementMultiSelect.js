@@ -41,7 +41,7 @@ export default props => {
                             <div className="checkbox small">
                                 <input type="checkbox" defaultChecked={defaultSelected} data-select-all="true"
                                        data-dimension={contentItem.dimensionId} id={`jq_${contentItem.dimensionId}`}
-                                       className="dimension_refinement_checkbox" autocomplete="off"/>
+                                       className="dimension_refinement_checkbox" autoComplete="off"/>
                                 <label htmlFor={`jq_${contentItem.dimensionId}`}
                                        dangerouslySetInnerHTML={{__html: contentItem.selectAllCheckBoxName}}/>
                             </div>
