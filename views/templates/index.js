@@ -2,12 +2,10 @@ import template1 from './template1';
 import template2 from './template2';
 import contentSlot from './contentSlot';
 import wcsContent from './wcsContent';
-import fs from 'fs';
+import importAll from '../../lib/utils/importAll';
 import _ from 'lodash';
 
-const files = fs.readdirSync('./views/templates');
-
-const templates = {
+let templates = {
     loginPage: template1,
     topSlot: contentSlot,
     footerSlot: contentSlot,
@@ -18,11 +16,5 @@ const templates = {
     productListPage: template2
 };
 
-_.each(files, file => {
-    const key = file.replace('.js', '');
-    if (key !== 'index') {
-        templates[key] = require('./' + key).default;
-    }
-});
-
+templates = _.merge(importAll(__dirname), templates);
 export default templates;

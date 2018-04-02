@@ -7,7 +7,7 @@
     "storeHostUrl": "http://localhost"
   },
   "store": {
-    "url": "http://172.17.118.26:7001",
+    "url": "http://172.17.118.27:7001",
     "headers": {
       "accept": "application/json",
       "accept-encoding": "application/json"
@@ -23,6 +23,15 @@
     "url": "http://localhost/static"
   },
   "wcs": {
-    "urlTemplate": "http://172.17.118.28:7102/cs/Sites?d=NoTouch&lookuphost=/cs/content&lookuppage=<%= lookuppage %>&path=<%= path %>"
+    "url": {
+      "protocol": "http",
+      "hostname": "172.17.118.28",
+      "port": "7102",
+      "pathname": "cs/Sites",
+      "query": {
+        "d": "NoTouch",
+        "lookuphost": "/cs/content"
+      }
+    }
   }
 }
